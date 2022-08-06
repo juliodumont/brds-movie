@@ -11,7 +11,7 @@ function MovieReview(props: ReviewProps) {
       <div className="review-author-container">
         <span className="review-image">
             <img src={ReviewStar} alt="Review image" />
-          </span>
+        </span>
         <h3>
           {props.author}
         </h3>

@@ -1,0 +1,58 @@
+.movie-details-container {
+  height: calc(100vh - 68px);
+  background: #525252;
+  padding: 17px 10px 30px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.details-title-container {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  margin-bottom: 25px;
+}
+
+.reviews-container {
+  padding: 17px 10px 28px 10px;
+}
+
+@media screen and (min-width: 576px) {
+  .movie-details-container {
+    padding: 22px 15px 35px 15px;
+  }
+
+  .details-title-container {
+    font-size: 24px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .movie-details-container {
+    padding: 26px 19px 35px 19px;
+  }
+  .reviews-container {
+    padding: 15px 10px 28px 10px;
+  }
+
+  .details-title-container {
+    font-size: 28px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .movie-details-container {
+    padding: 36px;
+  }
+  .reviews-container {
+    padding: 10px 20px 36px 20px;
+  }
+
+  .details-title-container{
+    font-size: 38px;
+  }
+}
+
+
