@@ -8,11 +8,13 @@ type ButtonProps = {
     bgColor?:string;
     className?: string;
     padding?: string;
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export function Button(props: ButtonProps){
     return(
         <button className={props.className} 
+        onClick={props.onClick}
         style={{
             width: props.width ? props.width : '100%',
             height: props.height ? props.height : '50px',

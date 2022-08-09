@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
-import { AuthContext, checkUserAuth, getTokenInformation } from "../../util/authentication";
+import { AuthContext, checkUserAuth, getTokenInformation, removeAuthInfo } from "../../util/authentication";
 import { Button } from "../Button";
+import history from "../../util/history";
 import "./styles.css";
 
 export function Navbar() {
@@ -17,7 +18,16 @@ export function Navbar() {
         authenticated: false,
       });
     }
-  }, [authContextData]);
+  }, [setAuthContextData]);
+
+  const handleOnLogoutClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    removeAuthInfo();
+    setAuthContextData({
+      authenticated: false,
+    });
+    history.replace('/');
+  };
 
   return (
     <header>
@@ -34,6 +44,7 @@ export function Navbar() {
                 width="100px"
                 height="30px"
                 className="logout-button"
+                onClick={handleOnLogoutClick}
               />
             </div>
           )}
@@ -41,5 +52,4 @@ export function Navbar() {
     </header>
   );
 }
-
 

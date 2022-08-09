@@ -3,8 +3,9 @@ import { Button } from "../../../components/Button";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { requestLogin } from "../../../util/requests";
 import "./styles.css";
-import { setAuthInfo } from "../../../util/authentication";
+import { AuthContext, getTokenInformation, setAuthInfo } from "../../../util/authentication";
 import { useHistory, useLocation } from "react-router-dom";
+import { useContext, useState } from "react";
 
 type LoginForm = {
   username: string;
@@ -21,8 +22,9 @@ function LoginCard() {
   const location = useLocation<LocationState>();
   /*Esse hook dá acesso a uma instância do histórico de navegação (stack do history)*/
   const history = useHistory();
-
+  const {setAuthContextData} = useContext(AuthContext);
   const {from} = location.state || {from: {pathname: '/movies'}};
+  const [authError, setAuthError] = useState<boolean>(false);
 
   const {
     register,
@@ -33,8 +35,15 @@ function LoginCard() {
   const onSubmit: SubmitHandler<LoginForm> = (data: LoginForm) => {
     requestLogin(data).then((response) => {
       setAuthInfo(response.data);
+      setAuthError(false)
+      setAuthContextData({
+        authenticated: true,
+        tokenInfo: getTokenInformation(),
+      });
       history.replace(from)
-    });
+    }).catch(error => {
+      setAuthError(true)
+    })
   };
 
   return (
