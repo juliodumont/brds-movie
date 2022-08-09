@@ -59,3 +59,8 @@ export const AuthContext = createContext<AuthContextType>({
   },
   setAuthContextData: () => null,
 });
+
+export const activeWithRole = (role : UserRoles) : boolean  =>{
+  return checkUserAuth() &&
+  getTokenInformation()?.authorities.includes(role) ? true : false;
+}

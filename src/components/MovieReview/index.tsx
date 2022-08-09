@@ -1,5 +1,6 @@
 import "./styles.css";
 import ReviewStar from "../../assets/images/review-star.svg";
+
 type ReviewProps = {
   author: string;
   review: string;
