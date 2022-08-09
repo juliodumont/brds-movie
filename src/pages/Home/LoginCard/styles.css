@@ -43,7 +43,7 @@
   color: #9e9e9e;
 }
 
-input[name="email"] {
+input[name="username"] {
   margin-bottom: 20px;
 }
 
@@ -90,4 +90,21 @@ input[name="password"] {
   .login-info:last-of-type {
     margin-bottom: 74px;
   }
+}
+
+
+.login-info input.error-active {
+  accent-color: none;
+  border: 2px solid #ff0000;
+  margin-bottom: 5px;
+}
+
+.username-error{
+  margin-bottom: 5px;
+  color: #ff0000;
+}
+
+.password-error{
+  margin-bottom: 34px;
+  color: #ff0000;
 }

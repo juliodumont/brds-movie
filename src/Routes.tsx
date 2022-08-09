@@ -1,7 +1,7 @@
 import { Navbar } from "./components/Navbar";
 import Home from "./pages/Home";
 import { Route, Router, Switch } from "react-router-dom";
-import history from './util/history';
+import history from "./util/history";
 import MoviesDetails from "./pages/MoviesDetails";
 import MoviesCatalog from "./pages/MoviesCatalog";
 
@@ -11,13 +11,13 @@ const Routes = () => {
       <Navbar />
       <Switch>
         <Route exact path="/">
-            <Home/>
+          <Home />
         </Route>
         <Route exact path="/movies">
-          <MoviesCatalog/>
+          <MoviesCatalog />
         </Route>
-        <Route path="/movies/1">
-          <MoviesDetails/>
+        <Route path="/movies/:movieId">
+          <MoviesDetails />
         </Route>
       </Switch>
     </Router>
@@ -25,3 +25,15 @@ const Routes = () => {
 };
 
 export default Routes;
+
+/* Envolver
+<Route exact path="/movies">
+<MoviesCatalog/>
+</Route>
+<Route path="/movies/:movieId">
+<MoviesDetails/>
+</Route>
+com um private route
+
+
+*/
