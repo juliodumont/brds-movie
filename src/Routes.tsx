@@ -4,6 +4,7 @@ import { Route, Router, Switch } from "react-router-dom";
 import history from "./util/history";
 import MoviesDetails from "./pages/MoviesDetails";
 import MoviesCatalog from "./pages/MoviesCatalog";
+import PrivateRoute from "./components/PrivateRoute";
 
 const Routes = () => {
   return (
@@ -13,12 +14,14 @@ const Routes = () => {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/movies">
-          <MoviesCatalog />
-        </Route>
-        <Route path="/movies/:movieId">
-          <MoviesDetails />
-        </Route>
+        <PrivateRoute path="/movies">
+          <Route exact path="/movies">
+            <MoviesCatalog />
+          </Route>
+          <Route path="/movies/:movieId">
+            <MoviesDetails />
+          </Route>
+        </PrivateRoute>
       </Switch>
     </Router>
   );
