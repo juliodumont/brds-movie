@@ -44,6 +44,8 @@ export const requestLogin = (login: Login) => {
 };
 
 export const requestBackend = (config: AxiosRequestConfig) => {
+  //Se tentar fazer requisição sem indicar que é uma requisição que requer autorização vai ocorrer problema mesmo
+  //com todos os outros parâmetros corretos.
   const headers = config.withCredentials
     ? {
         ...config.headers,

@@ -15,6 +15,15 @@
   letter-spacing: -0.015em;
 }
 
+.nav-logo a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.nav-logo a:hover {
+  opacity: 0.7;
+}
+
 .logout-button {
   text-transform: uppercase;
   font-family: "Open Sans";

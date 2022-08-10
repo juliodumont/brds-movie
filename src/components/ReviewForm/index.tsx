@@ -1,21 +1,45 @@
+import { AxiosRequestConfig } from "axios";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
 import { BaseCard } from "../../components/BaseCard";
 import { Button } from "../../components/Button";
+import { requestBackend } from "../../util/requests";
 import "./styles.css";
 
 type ReviewForm = {
   review: string;
 };
 
-export function ReviewForm() {
+type Props = {
+  reviewId: string;
+  onNewReview: () => void;
+};
+
+export function ReviewForm(props: Props) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ReviewForm>();
 
   const onSubmit: SubmitHandler<ReviewForm> = (data: ReviewForm) => {
-    console.log(data);
+    const params : AxiosRequestConfig = {
+      url: `/reviews`,
+      withCredentials: true,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        'text': data.review,
+        'movieId': props.reviewId
+      }
+    };
+    requestBackend(params).then((response) => {
+      props.onNewReview();
+      reset();
+    })    
   };
 
   return (

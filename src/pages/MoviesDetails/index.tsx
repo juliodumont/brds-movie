@@ -28,6 +28,7 @@ type UrlParams = {
 function MoviesDetails() {
   const { movieId } = useParams<UrlParams>();
   const [reviews, setReviews] = useState<MovieReview[]>();
+  const [newReview, setNewReview] = useState<boolean>(false);
 
   useEffect(() => {
     const params : AxiosRequestConfig = {
@@ -35,16 +36,23 @@ function MoviesDetails() {
       withCredentials: true,
     };
     requestBackend(params).then((response) => {
-      setReviews(response.data);
+      setReviews(response.data.reverse());
     })    
-  }, [movieId]);
+    if(newReview){
+      setNewReview(false)
+    }
+  }, [movieId, newReview]);
+
+  function onNewReview(){
+    setNewReview(true);
+  }
 
   return (
     <main className="movie-details-container">
       <div className="details-title-container">
         <h2>Tela detalhes do filme id: {movieId} </h2>
       </div>
-      {activeWithRole("ROLE_MEMBER") && <ReviewForm />}
+      {activeWithRole("ROLE_MEMBER") && <ReviewForm reviewId={movieId} onNewReview={onNewReview}/>}
       <BaseCard className="reviews-container">
       {reviews &&
         reviews.map((review) => {
