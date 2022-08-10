@@ -35,6 +35,7 @@
   border-radius: 4px;
 }
 
+
 .login-info input:focus {
   accent-color: #ffc700;
 }
@@ -47,9 +48,23 @@ input[name="username"] {
   margin-bottom: 20px;
 }
 
-input[name="password"] {
+input[name="password"]{
   margin-bottom: 54px;
 }
+
+.error-field{
+  margin-bottom: 8px;
+  color: #ff0000;
+  font-size: 12px;
+}
+
+input[name="username"].error-active,
+input[name="password"].error-active{
+  border: 1px solid #e10e0e;
+  accent-color: hsla(0, 100%, 50%, 0.65);
+}
+
+
 
 .login-button {
   color: #000;
@@ -90,21 +105,11 @@ input[name="password"] {
   .login-info:last-of-type {
     margin-bottom: 74px;
   }
+
+  .error-field{
+    font-size: 14px;
+  }
 }
 
 
-.login-info input.error-active {
-  accent-color: none;
-  border: 2px solid #ff0000;
-  margin-bottom: 5px;
-}
 
-.username-error{
-  margin-bottom: 5px;
-  color: #ff0000;
-}
-
-.password-error{
-  margin-bottom: 34px;
-  color: #ff0000;
-}

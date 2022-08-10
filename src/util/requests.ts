@@ -3,13 +3,6 @@ import axios, { AxiosRequestConfig } from "axios";
 import history from "./history";
 import { getAuthInfo } from "./authentication";
 
-/*
-export const BASE_URL =
-  process?.env.REACT_APP_BASE_URL ??
-  "https://movieflix-devsuperior.herokuapp.com";
-const CLIENT_ID = process?.env.REACT_APP_CLIENT_ID ?? "myclientid";
-const CLIENT_SECRET = process?.env.REACT_APP_CLIENT_SECRETE ?? "myclientsecret";*/
-
 export const BASE_URL = "https://movieflix-devsuperior.herokuapp.com";
 const CLIENT_ID = "myclientid";
 const CLIENT_SECRET = "myclientsecret";
