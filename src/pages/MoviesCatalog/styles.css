@@ -12,14 +12,28 @@
   font-size: 20px;
   letter-spacing: -0.015em;
   color: #ffffff;
-  margin-bottom: 25px;
+  margin-bottom: 49px;
 }
 
-.catalog-container{
+.catalog-container {
   font-size: 18px;
   letter-spacing: -0.015em;
+  display: flex;
+  flex-direction: column;
 }
 
+.catalog-container a {
+  margin-bottom: 12px;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.catalog-container a:hover {
+  opacity: 0.8;
+}
 
 @media screen and (min-width: 576px) {
   .movie-catalog-container {
@@ -30,7 +44,7 @@
     font-size: 24px;
   }
 
-  .catalog-container{
+  .catalog-container {
     font-size: 20px;
   }
 }
@@ -42,8 +56,20 @@
   .catalog-title-container {
     font-size: 28px;
   }
-  .catalog-container{
+  .catalog-container {
     font-size: 24px;
+  }
+
+  .catalog-container a {
+    margin-bottom: 20px;
+  }
+
+  .catalog-title-container {
+    margin-bottom: 39px;
+  }
+
+  .catalog-container a {
+    font-size: 20px;
   }
 }
 
@@ -52,9 +78,14 @@
     padding: 40px;
   }
 
-  .catalog-title-container{
+  .catalog-title-container {
     font-size: 38px;
   }
+
+  .catalog-container a {
+    margin-bottom: 27px;
+  }
+  .catalog-container a {
+    font-size: 24px;
+  }
 }
-
-

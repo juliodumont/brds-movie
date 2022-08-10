@@ -29,14 +29,4 @@ const Routes = () => {
 
 export default Routes;
 
-/* Envolver
-<Route exact path="/movies">
-<MoviesCatalog/>
-</Route>
-<Route path="/movies/:movieId">
-<MoviesDetails/>
-</Route>
-com um private route
 
-
-*/

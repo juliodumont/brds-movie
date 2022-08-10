@@ -4,11 +4,12 @@ import ReviewStar from "../../assets/images/review-star.svg";
 type ReviewProps = {
   author: string;
   review: string;
+  key: string | number;
 };
 
 function MovieReview(props: ReviewProps) {
   return (
-    <div className="movie-review">
+    <div className="movie-review" key={props.key}>
       <div className="review-author-container">
         <span className="review-image">
             <img src={ReviewStar} alt="Review image" />

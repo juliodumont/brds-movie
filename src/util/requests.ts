@@ -1,6 +1,7 @@
 import qs from "qs";
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import history from "./history";
+import { getAuthInfo } from "./authentication";
 
 /*
 export const BASE_URL =
@@ -9,8 +10,7 @@ export const BASE_URL =
 const CLIENT_ID = process?.env.REACT_APP_CLIENT_ID ?? "myclientid";
 const CLIENT_SECRET = process?.env.REACT_APP_CLIENT_SECRETE ?? "myclientsecret";*/
 
-export const BASE_URL =
-  "https://movieflix-devsuperior.herokuapp.com";
+export const BASE_URL = "https://movieflix-devsuperior.herokuapp.com";
 const CLIENT_ID = "myclientid";
 const CLIENT_SECRET = "myclientsecret";
 
@@ -41,6 +41,17 @@ export const requestLogin = (login: Login) => {
     data,
     headers,
   });
+};
+
+export const requestBackend = (config: AxiosRequestConfig) => {
+  const headers = config.withCredentials
+    ? {
+        ...config.headers,
+        Authorization: 'Bearer ' + getAuthInfo().access_token,
+      }
+    : config.headers;
+
+  return axios({ ...config, baseURL: BASE_URL, headers });
 };
 
 axios.interceptors.request.use(
