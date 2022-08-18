@@ -57,6 +57,7 @@
 }
 
 @media screen and (min-width: 768px) {
+  
   .movie-catalog-container {
     padding: 26px 19px 35px 19px;
   }
@@ -65,6 +66,7 @@
   }
   .catalog-container {
     font-size: 24px;
+    gap: 40px;
   }
 
   .catalog-container a {
@@ -105,5 +107,10 @@
   .catalog-movie-container {
     flex: 1 1 20%;
     
+  }
+  .catalog-container {
+    gap: 29px;
+    max-width: 1108px;
+    margin: 0 auto;
   }
 }

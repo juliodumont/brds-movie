@@ -49,7 +49,7 @@ const MovieCard = ({ size, showDescription, movie }: MovieCardProps) => {
           <p className="movie-year">
             {movie ? movie.year : movieInformation?.year}
           </p>
-          <p className="movie-subtitle">
+          <p className={`movie-subtitle ${!movie?.subTitle && !movieInformation?.subTitle ? 'justify-card': ''}`}>
             {movie ? movie.subTitle : movieInformation?.subTitle}
           </p>
         </div>

@@ -8,9 +8,11 @@
 }
 
 .movie-card-container.sm {
-  height: 322px;
+  min-height: 322px;
   padding: 26px 0px;
 }
+
+
 
 .movie-card-container.sm {
   border-radius: 4px;
@@ -61,6 +63,10 @@
   color: #9E9E9E;
   padding: 13px 9px;
   text-align: justify;
+}
+
+.justify-card{
+  margin-bottom: 42px;
 }
 
 @media screen and (min-width: 576px) {  
