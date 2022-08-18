@@ -8,35 +8,47 @@ import { requestBackend } from "../../util/requests";
 import "./styles.css";
 
 function MoviesCatalog() {
-  const [movieInformation, setMovieInformation] = useState<Page<MovieInformation>>();
+  const [movieInformation, setMovieInformation] =
+    useState<Page<MovieInformation>>();
 
-  useEffect(()=>{
-    const params: AxiosRequestConfig ={
-      url: '/movies/1',
+  const movieTest: MovieInformation = {
+    id: 6,
+    title: "A Voz do Silêncio",
+    subTitle: "Koe no Katachi",
+    year: 2016,
+    imgUrl:
+      "https://image.tmdb.org/t/p/w533_and_h300_bestv2/5lAMQMWpXMsirvtLLvW7cJgEPkU.jpg",
+  };
+
+  useEffect(() => {
+    const params: AxiosRequestConfig = {
+      url: "/movies",
       withCredentials: true,
-    }
+      params: {
+        page: 0,
+        size: 8,
+      },
+    };
+    requestBackend(params).then((response) => {
+      setMovieInformation(response.data);
+    });
+  }, []);
 
-    requestBackend(params).then((response)=>console.log(response.data))
-
-  },[])
   return (
     <main className="movie-catalog-container">
-        <div className="catalog-title-container">
-          <h2>Tela listagem de filmes</h2>
-        </div>
-        <div className="catalog-container">
-          <MovieCard size={"sm"} movie={{
-          id: 0,
-          title: "",
-          subTitle: "",
-          year: 0,
-          imgUrl: "",
-          synopsis: undefined,
-          genre: undefined
-        }}/>
-          <Link to="/movies/1">Acessar /movies/1</Link> 
-          <Link to="/movies/2">Acessar /movies/2</Link> 
-        </div>
+      <div className="catalog-container">
+        {movieInformation?.content.map((movie) => (
+          <div className="catalog-movie-container">
+            <Link
+              to={`/movies/${movie.id}`}
+              key={movie.id}
+              className={"movie-details-link"}
+            >
+              <MovieCard size={"sm"} movie={movie} showDescription={false} />
+            </Link>
+          </div>
+        ))}
+      </div>
     </main>
   );
 }

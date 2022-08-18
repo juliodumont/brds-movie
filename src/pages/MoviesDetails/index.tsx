@@ -55,9 +55,6 @@ function MoviesDetails() {
 
   return (
     <main className="movie-details-container">
-      <div className="details-title-container">
-        <h2>Tela detalhes do filme id: {movieId} </h2>
-      </div>
       <MovieCard size={"lg"} showDescription={true}/>
       {activeWithRole("ROLE_MEMBER") && <ReviewForm reviewId={movieId} onNewReview={onNewReview}/>}
       <BaseCard className="reviews-container">

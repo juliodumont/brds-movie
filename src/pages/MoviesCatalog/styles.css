@@ -4,6 +4,13 @@
   padding: 15px 17px 30px 17px;
   display: flex;
   flex-direction: column;
+  overflow: auto;
+  cursor: unset;
+}
+
+
+.catalog-movie-container{
+  max-width: 436px;
 }
 
 .catalog-title-container {
@@ -19,7 +26,7 @@
   font-size: 18px;
   letter-spacing: -0.015em;
   display: flex;
-  flex-direction: column;
+  gap: 19px 20px;
 }
 
 .catalog-container a {
