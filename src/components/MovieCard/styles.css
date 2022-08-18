@@ -8,7 +8,6 @@
 }
 
 .movie-card-container.sm {
-  max-width: 436px;
   height: 322px;
   padding: 26px 0px;
 }
@@ -64,11 +63,7 @@
   text-align: justify;
 }
 
-@media screen and (min-width: 576px) {
-  .movie-card-container.sm {
-    margin-bottom: 20px;
-  }
-  
+@media screen and (min-width: 576px) {  
   .movie-card-container.lg {
     margin-bottom: 20px;
   }
