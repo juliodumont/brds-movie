@@ -1,0 +1,132 @@
+.movie-card-container {
+  letter-spacing: -0.015em;
+  font-style: normal;
+  font-weight: 700;
+  background: #6c6c6c;
+  color: #fff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.movie-card-container.sm {
+  border-radius: 4px;
+}
+
+.movie-card-container.lg {
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.movie-card-image-container {
+  margin-bottom: 11px;
+}
+
+.movie-card-image {
+  width: 100%;
+  height: auto;
+  max-width: 605px;
+}
+
+.movie-card-information{
+  margin-bottom: 16px;
+}
+
+.movie-title {
+  font-size: 20px;
+}
+
+.movie-year {
+  color: #ffc700;
+}
+
+.movie-subtitle {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.movie-card-description {
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  font-style: normal;
+  font-weight: 400;
+  color: #9E9E9E;
+  padding: 13px 9px;
+  text-align: justify;
+}
+
+@media screen and (min-width: 576px) {
+  .movie-card-container.sm {
+    margin-bottom: 20px;
+  }
+  
+  .movie-card-container.lg {
+    margin-bottom: 20px;
+  }
+
+  .movie-card-information{
+    margin-bottom: 21px;
+  }
+
+  .movie-card-description {
+    padding: 13px 15px;
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+  .movie-card-container.lg {
+    margin-bottom: 40px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .movie-card-container.lg .movie-card-image-container {
+    margin-bottom: 18px;
+    align-self: center;
+  }
+
+  .movie-card-container.lg .movie-title{
+    font-size: 36px;
+  }
+  
+  .movie-card-container.lg .movie-year,
+  .movie-card-container.lg .movie-subtitle{
+    font-size: 24px;
+  }
+
+  .movie-card-container.lg .movie-card-information{
+    margin-bottom: 39px;
+  }
+
+}
+
+@media screen and (min-width: 992px) {
+  .movie-card-description {
+    padding: 20px 27px 13px 27px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .movie-card-container.lg {
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .movie-card-container.lg .movie-card-image-container {
+    margin-bottom: 0px;
+    align-self: unset;
+    flex: 1 0 500px;
+  }
+  .movie-card-container.lg .movie-card-info-container{
+    flex: 1 0 500px;
+  }
+  .movie-card-container.lg .movie-card-information{
+    margin-bottom: 16px;
+  }
+
+  .movie-card-description {
+    padding: 16px 20px;
+  }
+}

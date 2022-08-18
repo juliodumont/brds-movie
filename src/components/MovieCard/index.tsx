@@ -1,8 +1,9 @@
-import axios, { AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig } from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MovieInformation } from "../../types/movie";
 import { requestBackend } from "../../util/requests";
+import './styles.css'
 
 type MovieCardProps = {
   size: string;
@@ -33,8 +34,9 @@ const MovieCard = ({ size, showDescription, movie }: MovieCardProps) => {
 
   return (
     <div className={`movie-card-container ${size == "sm" ? "sm" : "lg"}`}>
-      <div className="movie-card-image">
+      <div className="movie-card-image-container">
         <img
+          className="movie-card-image"
           src={`${movie ? movie.imgUrl : movieInformation?.imgUrl}`}
           alt={`Movie cover: ${movie ? movie.title : movieInformation?.title}`}
         />
