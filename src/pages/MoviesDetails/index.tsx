@@ -2,6 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BaseCard } from "../../components/BaseCard";
+import MovieCard from "../../components/MovieCard";
 import MovieReview from "../../components/MovieReview";
 import { ReviewForm } from "../../components/ReviewForm";
 import { activeWithRole } from "../../util/authentication";
@@ -25,6 +26,10 @@ type UrlParams = {
   movieId: string;
 };
 
+
+
+
+
 function MoviesDetails() {
   const { movieId } = useParams<UrlParams>();
   const [reviews, setReviews] = useState<MovieReview[]>();
@@ -32,6 +37,7 @@ function MoviesDetails() {
 
   useEffect(() => {
     const params : AxiosRequestConfig = {
+      method: 'GET',
       url: `/movies/${movieId}/reviews`,
       withCredentials: true,
     };
@@ -52,6 +58,7 @@ function MoviesDetails() {
       <div className="details-title-container">
         <h2>Tela detalhes do filme id: {movieId} </h2>
       </div>
+      <MovieCard size={"lg"} />
       {activeWithRole("ROLE_MEMBER") && <ReviewForm reviewId={movieId} onNewReview={onNewReview}/>}
       <BaseCard className="reviews-container">
       {reviews &&
