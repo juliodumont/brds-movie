@@ -65,6 +65,10 @@
   text-align: justify;
 }
 
+.movie-card-description.loading{
+  border: none;
+}
+
 .justify-card{
   margin-bottom: 42px;
 }
