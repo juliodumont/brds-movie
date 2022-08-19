@@ -27,6 +27,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 26px;
 }
 
 .catalog-container a {
@@ -54,6 +55,10 @@
     flex: 1 1 40%;
     max-width: 436px;
   }
+
+  .catalog-container{
+    margin-bottom: 20px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -67,6 +72,7 @@
   .catalog-container {
     font-size: 24px;
     gap: 40px;
+    margin-bottom: 40px;
   }
 
   .catalog-container a {
@@ -111,6 +117,7 @@
   .catalog-container {
     gap: 29px;
     max-width: 1108px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
