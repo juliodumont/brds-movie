@@ -1,5 +1,6 @@
 import { AxiosRequestConfig } from "axios";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import { BaseCard } from "../../components/BaseCard";
 import { Button } from "../../components/Button";
 import { requestBackend } from "../../util/requests";
@@ -38,6 +39,16 @@ export function ReviewForm(props: Props) {
     requestBackend(params).then(() => {
       props.onNewReview();
       reset();
+    }).catch(() => {
+      toast.error("Falha ao cadastrar avaliação", {
+        position: "top-center",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     })    
   };
 

@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import GenreSelector from "../../components/GenreSelector";
 import MovieCard from "../../components/MovieCard";
 import { MovieInformation } from "../../types/movie";
 import { Page } from "../../types/vendor/page";
@@ -36,12 +37,14 @@ function MoviesCatalog() {
 
   return (
     <main className="movie-catalog-container">
+      <div>
+        <GenreSelector onGenreSelect={() => {}}/>
+      </div>
       <div className="catalog-container">
         {movieInformation?.content.map((movie) => (
-          <div className="catalog-movie-container">
+          <div className="catalog-movie-container" key={movie.id}>
             <Link
               to={`/movies/${movie.id}`}
-              key={movie.id}
               className={"movie-details-link"}
             >
               <MovieCard size={"sm"} movie={movie} showDescription={false} />

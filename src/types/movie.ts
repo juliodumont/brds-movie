@@ -1,6 +1,6 @@
 export type MovieGenre = {
   id: number;
-  name: string;
+  name: string | null;
 }
 
 export type MovieInformation = {
