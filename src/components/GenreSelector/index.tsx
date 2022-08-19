@@ -5,8 +5,8 @@ import { MovieGenre } from "../../types/movie";
 import { requestBackend } from "../../util/requests";
 import "./styles.css";
 
-type FormGenre = {
-  genre: MovieGenre;
+export type FormGenre = {
+  genre: MovieGenre | null;
 };
 
 type Props = {
@@ -32,8 +32,7 @@ function GenreSelector({ onGenreSelect }: Props) {
     const genreData: FormGenre = {
       genre: getValues("genre"),
     };
-    console.log(genreData);
-    //onSubmitFilter(obj);
+    onGenreSelect(genreData);
   };
 
   return (
@@ -57,16 +56,4 @@ function GenreSelector({ onGenreSelect }: Props) {
     </div>
   );
 }
-
-/*
-  
-  const handleFormClear = () => {
-    setValue('name', '');
-    setValue('category', null);
-  };
-
-  
-*
-};
-*/
 export default GenreSelector;

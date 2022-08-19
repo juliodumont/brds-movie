@@ -1,39 +1,60 @@
 import { AxiosRequestConfig } from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import GenreSelector from "../../components/GenreSelector";
+import GenreSelector, { FormGenre } from "../../components/GenreSelector";
 import MovieCard from "../../components/MovieCard";
 import Pagination from "../../components/Pagination";
-import { MovieInformation } from "../../types/movie";
+import { MovieGenre, MovieInformation } from "../../types/movie";
 import { Page } from "../../types/vendor/page";
 import { requestBackend } from "../../util/requests";
 import "./styles.css";
+
+type PageData = {
+  activePage: number;
+  filterData: FormGenre;
+};
 
 function MoviesCatalog() {
   const [movieInformation, setMovieInformation] =
     useState<Page<MovieInformation>>();
 
-  const getMovies = (pageNumber: number) => {
+  const [pageData, setPageData] = useState<PageData>({
+    activePage: 0,
+    filterData: { genre: null },
+  });
+
+  const handlePageChange = (pageNumber: number) => {
+    setPageData({
+      ...pageData,
+      activePage: pageNumber,
+    });
+  };
+
+  const handleGenreSelect = (movieGenre: FormGenre) => {
+    setPageData({
+      ...pageData,
+      filterData: movieGenre
+    })
+  };
+
+  const getMovies = useCallback(() => {
     const params: AxiosRequestConfig = {
       url: "/movies",
       withCredentials: true,
       params: {
-        page: pageNumber,
+        page: pageData.activePage,
         size: 8,
+        genreId: pageData.filterData.genre?.id
       },
     };
     requestBackend(params).then((response) => {
       setMovieInformation(response.data);
     });
-  }
-
-  const handleGenreSelect = () =>{
-    
-  }
+  }, [pageData])
 
   useEffect(() => {
-    getMovies(0)
-  }, []);
+    getMovies();
+  }, [getMovies]);
 
   return (
     <main className="movie-catalog-container">
@@ -53,7 +74,7 @@ function MoviesCatalog() {
         <Pagination
           pageCount={movieInformation ? movieInformation.totalPages : 0}
           range={3}
-          onChange={getMovies}
+          onChange={handlePageChange}
         />
       </div>
     </main>

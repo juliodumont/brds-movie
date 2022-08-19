@@ -34,7 +34,6 @@ ul {
 
 .arrow-next,
 .arrow-previous {
-  cursor: pointer;
   color: #ffc700;
 }
 
@@ -46,9 +45,10 @@ ul {
   margin-left: 10px;
 }
 
-.arrow-previous:hover,
-.arrow-next:hover {
+.arrow-previous:not(.arrow-inactive):hover,
+.arrow-next:not(.arrow-inactive):hover {
   opacity: 0.8;
+  cursor: pointer;
 }
 
 .arrow-inactive {
