@@ -33,7 +33,7 @@ function MoviesCatalog() {
 
   const handleGenreSelect = (movieGenre: FormGenre) => {
     setPageData({
-      ...pageData,
+      activePage: 0,
       filterData: movieGenre,
     });
   };
@@ -79,6 +79,7 @@ function MoviesCatalog() {
         <Pagination
           pageCount={movieInformation ? movieInformation.totalPages : 0}
           range={3}
+          forcePage={movieInformation?.number}
           onChange={handlePageChange}
         />
       </div>
