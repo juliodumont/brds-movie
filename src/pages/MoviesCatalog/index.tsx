@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import GenreSelector, { FormGenre } from "../../components/GenreSelector";
 import MovieCard from "../../components/MovieCard";
 import Pagination from "../../components/Pagination";
-import { MovieGenre, MovieInformation } from "../../types/movie";
+import { MovieInformation } from "../../types/movie";
 import { Page } from "../../types/vendor/page";
 import { requestBackend } from "../../util/requests";
+import CatalogMovieLoader from "./CatalogMovieLoader";
 import "./styles.css";
 
 type PageData = {
@@ -33,8 +34,8 @@ function MoviesCatalog() {
   const handleGenreSelect = (movieGenre: FormGenre) => {
     setPageData({
       ...pageData,
-      filterData: movieGenre
-    })
+      filterData: movieGenre,
+    });
   };
 
   const getMovies = useCallback(() => {
@@ -44,13 +45,13 @@ function MoviesCatalog() {
       params: {
         page: pageData.activePage,
         size: 8,
-        genreId: pageData.filterData.genre?.id
+        genreId: pageData.filterData.genre?.id,
       },
     };
     requestBackend(params).then((response) => {
       setMovieInformation(response.data);
     });
-  }, [pageData])
+  }, [pageData]);
 
   useEffect(() => {
     getMovies();
@@ -62,13 +63,17 @@ function MoviesCatalog() {
         <GenreSelector onGenreSelect={handleGenreSelect} />
       </div>
       <div className="catalog-container">
-        {movieInformation?.content.map((movie) => (
-          <div className="catalog-movie-container" key={movie.id}>
-            <Link to={`/movies/${movie.id}`} className={"movie-details-link"}>
-              <MovieCard size={"sm"} movie={movie} showDescription={false} />
-            </Link>
-          </div>
-        ))}
+        {!movieInformation?.content ? (
+          <CatalogMovieLoader />
+        ) : (
+          movieInformation?.content.map((movie) => (
+            <div className="catalog-movie-container" key={movie.id}>
+              <Link to={`/movies/${movie.id}`} className={"movie-details-link"}>
+                <MovieCard size={"sm"} movie={movie} showDescription={false} />
+              </Link>
+            </div>
+          ))
+        )}
       </div>
       <div>
         <Pagination

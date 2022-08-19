@@ -1,9 +1,9 @@
 import { AxiosRequestConfig } from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MovieInformation } from "../../types/movie";
 import { requestBackend } from "../../util/requests";
-import './styles.css'
+import "./styles.css";
 
 type MovieCardProps = {
   size: string;
@@ -17,6 +17,7 @@ type UrlParams = {
 
 const MovieCard = ({ size, showDescription, movie }: MovieCardProps) => {
   const [movieInformation, setMovieInformation] = useState<MovieInformation>();
+
   const { movieId } = useParams<UrlParams>();
   useEffect(() => {
     if (!movie) {
@@ -49,7 +50,13 @@ const MovieCard = ({ size, showDescription, movie }: MovieCardProps) => {
           <p className="movie-year">
             {movie ? movie.year : movieInformation?.year}
           </p>
-          <p className={`movie-subtitle ${!movie?.subTitle && !movieInformation?.subTitle ? 'justify-card': ''}`}>
+          <p
+            className={`movie-subtitle ${
+              !movie?.subTitle && !movieInformation?.subTitle
+                ? "justify-card"
+                : ""
+            }`}
+          >
             {movie ? movie.subTitle : movieInformation?.subTitle}
           </p>
         </div>
